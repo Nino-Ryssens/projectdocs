@@ -11,14 +11,14 @@ body{
 }
 /* Container styling */
 .container {
-    font-family: 'Courir+Prime';
+    font-family: 'Gabarito';
     max-width: 65vw;
     margin-left: auto;
     margin-right: auto;
 }
 
 .title {
-    font-family: 'Courir+Prime';
+    font-family: 'Gabarito';
     font-size: 1em;
     font-weight: bold;
     text-transform: capitalize;
