@@ -1,28 +1,223 @@
+/* Load Inter so every page shows the same font weights */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Gabarito:wght@400..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-body{
-    background-color: rgb(32, 47, 159);
-    color: #f7f6f1;
-    height:auto;
-    min-height:100vh;
-}
-/* Container styling */
-.container {
-    font-family: 'Gabarito';
-    max-width: 65vw;
-    margin-left: auto;
-    margin-right: auto;
+/* Load / register "Google Sans Code" (place font file at assets/fonts/GoogleSansCode.woff2) */
+@font-face {
+  font-family: 'Google Sans Code';
+  src: local('Google Sans Code'), url('assets/fonts/GoogleSansCode.woff2') format('woff2');
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+  font-optical-sizing: auto;
 }
 
-.title {
-    font-family: 'Gabarito';
-    font-size: 1em;
-    font-weight: bold;
-    text-transform: capitalize;
-    margin-top: 2em;
+/* === TYPOGRAFIE & BASIS === */
+body {
+  font-family: 'Inter', sans-serif;
+  color: #111;
+  background-color: #fafafa;
+  margin: 0;
+  line-height: 1.6;
+  font-size: 1rem;
 }
 
+h1, h2, h3, h4 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
 
+p {
+  max-width: 60ch;
+  margin-bottom: 1.5rem;
+}
+
+/* === HEADER === */
+.header {
+  text-align: center;
+  padding: 2rem 1rem 3rem; /* reduced top padding to bring hero closer to the top */
+  border-bottom: 1px solid #ddd;
+}
+
+.hero-title {
+  /* increased ~50% vs original clamp(2.5rem, 6vw, 5rem) */
+  font-size: clamp(3.75rem, 9vw, 7.5rem);
+  margin: 0 0 0.25rem 0; /* reduce space below the title to bring subtitle closer */
+  font-family: 'Doto', 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+/* subtitle — closer to the hero and slightly adjusted size */
+.subtitle {
+  font-size: 1.05rem;
+  color: #555;
+  margin-top: 0.25rem;
+  text-align: center;
+  display: block;
+}
+
+/* make sure all header-specific selectors reflect the reduced spacing */
+.header p.subtitle,
+header.header > .subtitle,
+header.header p.subtitle,
+.header > .subtitle,
+.header p.subtitle {
+  text-align: center !important;
+  display: block !important;
+  width: 100% !important;
+  margin: 0.25rem auto 0 !important;
+}
+
+/* === NAVIGATIE === */
+.nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem 0;
+  list-style: none;
+  margin: 0;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 400;
+  transition: color 0.2s ease;
+}
+
+.nav a:hover,
+.nav a.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* === MAIN CONTENT === */
+.content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.intro {
+  text-align: left;
+}
+
+.two-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.two-columns > div {
+  flex: 1 1 45%;
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.two-columns > div:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* === FOOTER === */
+.footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  padding: 2rem 0 4rem;
+  border-top: 1px solid #eee;
+}
+
+/* === LINKS === */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.50s ease;
+}
+
+a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* === PAGE NAVIGATION === */
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: 3rem auto 0;
+  padding: 1rem 2rem;
+  border-top: 1px solid #eee;
+}
+
+.page-nav a {
+  color: var(--accent);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.page-nav a:hover {
+  color: var(--accent);
+  transform: translateX(2px);
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 700px) {
+  .page-nav {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .page-nav a {
+    display: inline-block;
+  }
+}
+
+/* SITE COLORS */
+:root {
+  --accent: #7dcd85; /* secondary color updated */
+}
+
+/* site-wide use of Google Sans Code with monospace fallback */
+:root {
+  --ui-font: 'Google Sans Code', monospace;
+}
+
+/* apply the font to all text */
+html, body {
+  font-family: var(--ui-font);
+}
+
+/* optional utility matching your snippet (use classes like .google-sans-code-400) */
+.google-sans-code-400 {
+  font-family: 'Google Sans Code', monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* responsive images used across pages */
+.responsive-img,
+.content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* optional small caption styling */
+figcaption {
+  font-size: 0.9rem;
+  color: rgba(249,249,249,0.85);
+  margin-top: 0.5rem;
+}
