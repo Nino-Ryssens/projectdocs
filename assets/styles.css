@@ -74,8 +74,9 @@ header.header p.subtitle,
 .nav ul {
   display: flex;
   justify-content: center;
-  gap: 2rem;
-  padding: 2rem 0;
+  gap: 1rem;               /* reduced horizontal gap so the arrow sits closer to "Homepage" */
+  align-items: center;     /* vertically center arrow + links */
+  padding: 1.25rem 0;      /* slightly tighter vertical spacing */
   list-style: none;
   margin: 0;
 }
@@ -85,12 +86,33 @@ header.header p.subtitle,
   color: #333;
   font-weight: 400;
   transition: color 0.2s ease;
+  display: inline-flex;    /* keep link content and any inline glyphs aligned */
+  align-items: center;
+  gap: 0.35rem;            /* small spacing between icon/glyph and text */
 }
 
 .nav a:hover,
 .nav a.active {
   color: var(--accent);
   font-weight: 600;
+}
+
+/* tighten toggle placement and size */
+.nav .toggle-label {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0;          /* remove extra left margin that caused awkward gap */
+  padding-left: 0;
+}
+
+.nav .nav-toggle {
+  width: 40px;             /* slightly smaller control so it sits closer to nav text */
+  height: 40px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
 /* === MAIN CONTENT === */
@@ -183,6 +205,87 @@ a:hover {
   }
 }
 
+/* Mobile usability tweaks */
+@media (max-width: 700px) {
+  /* tighten header so hero fits on small screens */
+  .header {
+    padding: 1rem 1rem 1.5rem;
+  }
+
+  /* scale down hero title and bring subtitle closer */
+  .hero-title {
+    font-size: clamp(2.2rem, 8vw, 4.2rem);
+    margin-bottom: 0.15rem;
+  }
+  .subtitle {
+    font-size: 0.95rem;
+    margin-top: 0.125rem;
+  }
+
+  /* make main content more compact and readable */
+  .content {
+    padding: 1.5rem 1rem;
+  }
+
+  /* NAV: stack links vertically on small screens (changed from horizontal scroll) */
+  .nav ul {
+    display: flex;
+    flex-direction: column; /* stack items */
+    gap: 0.6rem;
+    padding: 0.75rem 1rem;
+    margin: 0;
+    overflow: visible; /* no horizontal scroll */
+    -webkit-overflow-scrolling: auto;
+    align-items: stretch;
+  }
+
+  /* Make each link a full-width, touch-friendly block */
+  .nav a {
+    display: block;
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: 10px;
+    text-align: left;
+    font-size: 1rem;
+    background: transparent;
+  }
+
+  /* subtle hover / active affordance */
+  .nav a:hover {
+    background: rgba(0,0,0,0.04);
+  }
+
+  /* convert two columns to single column */
+  .two-columns {
+    flex-direction: column;
+  }
+  .two-columns > div {
+    flex: 1 1 100%;
+    padding: 1rem;
+  }
+
+  /* page-nav: stack buttons and increase hit area */
+  .page-nav {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+  .page-nav a {
+    width: 100%;
+    text-align: center;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+  }
+}
+
+/* small screens extra compact */
+@media (max-width: 420px) {
+  .hero-title { font-size: clamp(1.9rem, 9vw, 3.2rem); }
+  .subtitle { font-size: 0.9rem; }
+  .nav a { font-size: 0.95rem; padding: 0.55rem 0.85rem; }
+  .content { padding: 1rem; }
+}
+
 /* SITE COLORS */
 :root {
   --accent: #7dcd85; /* secondary color updated */
@@ -221,3 +324,81 @@ figcaption {
   color: rgba(249,249,249,0.85);
   margin-top: 0.5rem;
 }
+
+/* ===== CSS-only mobile reveal for nav (checkbox + hover/focus) =====
+   - Keeps desktop nav unchanged
+   - Reveals stacked week links below nav on hover/focus or when checkbox is checked (touch)
+   - Animations use opacity + transform, transition: 0.3s ease
+*/
+
+/* hide the checkbox visually but keep it available for :checked */
+.nav-toggle-checkbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* visual toggle (label) styling */
+.nav .nav-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;             /* slightly smaller control so it sits closer to nav text */
+  height: 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: var(--accent, #7dcd85);
+  font-weight: 700;
+  position: relative;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* stacked glyphs for arrow -> dash animation */
+.nav .glyph {
+  position: absolute;
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform-origin: center;
+}
+.nav .glyph.arrow { opacity: 1; transform: translateX(0) scale(1); }
+.nav .glyph.dash  { opacity: 0; transform: translateX(-6px) scale(.95); }
+
+/* MOBILE: reveal week links in-flow so they PUSH content (no overlay) */
+@media (max-width: 700px) {
+  /* stack nav items vertically on small
+  }
+
+  /* style the links so when revealed they look like a stacked panel */
+  .nav .week-link a {
+    display: block;
+    padding: 0.55rem 0.75rem;
+    border-radius: 8px;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    background: transparent;
+  }
+  .nav .week-link a:hover {
+    background: rgba(255,255,255,0.04);
+    transform: translateX(6px);
+  }
+
+  /* REVEAL: on hover or keyboard focus show all week links and expand their height,
+     which pushes the page content down instead of overlaying it.
+     Also supports the CSS-only checkbox toggle for touch devices. */
+  .nav:hover .week-link,
+  .nav:focus-within .week-link,
+  .nav-toggle-checkbox:checked ~ ul .week-link {
+    max-height: 420px; /* large enough to fit all 5 links; adjust if you change spacing */
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Keep the arrow -> em-dash animation working when checkbox is checked */
+  .nav-toggle-checkbox:checked ~ ul .glyph.arrow { opacity: 0; transform: translateX(-6px) scale(.95); }
+  .nav-toggle-checkbox:checked ~ ul .glyph.dash  { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+/* Keep rest of stylesheet unchanged */
