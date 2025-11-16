@@ -23,6 +23,9 @@
     <p class="subtitle">Procesdocumentatie</p>
   </header>
 
+  <!-- hidden target anchor (CSS :target will use this) -->
+  <div id="nav-closed" aria-hidden="true"></div>
+
   <!-- NAV: CSS-only toggle for mobile (checkbox + label). Keeps desktop unchanged. -->
   <nav class="nav" aria-label="Primary">
     <!-- hidden checkbox controls the mobile stack reveal (no JS) -->
@@ -33,7 +36,8 @@
 
       <!-- visual toggle button (label toggles the checkbox) -->
       <li class="toggle-label">
-        <label for="nav-toggle" class="nav-toggle" aria-hidden="false" aria-label="Open weeks">
+        <!-- label acts as accessible button (keyboard / touch friendly) -->
+        <label for="nav-toggle" class="nav-toggle" role="button" tabindex="0" aria-label="Toggle weeks">
           <span class="glyph arrow" aria-hidden="true">›</span>
           <span class="glyph dash" aria-hidden="true">—</span>
         </label>

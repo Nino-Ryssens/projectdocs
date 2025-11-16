@@ -18,12 +18,14 @@
     <p class="subtitle">Procesdocumentatie</p>
   </header>
 
+  <div id="nav-closed" aria-hidden="true"></div>
+
   <nav class="nav" aria-label="Primary">
     <input id="nav-toggle" class="nav-toggle-checkbox" type="checkbox" aria-hidden="true">
     <ul>
       <li><a href="index.html">Homepage</a></li>
       <li class="toggle-label">
-        <label for="nav-toggle" class="nav-toggle" aria-hidden="false" aria-label="Open weeks">
+        <label for="nav-toggle" class="nav-toggle" role="button" tabindex="0" aria-label="Open weeks">
           <span class="glyph arrow" aria-hidden="true">›</span>
           <span class="glyph dash" aria-hidden="true">—</span>
         </label>
@@ -58,8 +60,8 @@
   </main>
 
   <div class="page-nav">
-    <a href="week2.html" class="prev-week">← Vorige week</a>
-    <a href="week4.html" class="next-week">Volgende week →</a>
+    <a href="week2.html#nav-closed" class="prev-week">← Vorige week</a>
+    <a href="week4.html#nav-closed" class="next-week">Volgende week →</a>
   </div>
 
   <footer class="footer">
