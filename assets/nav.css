@@ -32,13 +32,13 @@
   .nav .toggle-label {
     flex: 1;
     display: flex;
-    justify-content: center; /* closed => center */
-    align-items: center;
+    justify-content: left; /* closed => center */
+    align-items: left;
   }
 
   /* when checkbox is checked (open), move the toggle to the right */
   #nav-toggle:checked ~ ul .toggle-label {
-    justify-content: flex-end; /* open => right */
+    justify-content: flex-start; /* open => right */
     padding-right: 0.5rem; /* small offset from the edge */
   }
 

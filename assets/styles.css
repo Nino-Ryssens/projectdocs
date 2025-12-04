@@ -1,5 +1,6 @@
 /* Load Inter so every page shows the same font weights */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Doto:wght,ROND@900,100&display=swap');
 
 /* Load / register "Google Sans Code" (place font file at assets/fonts/GoogleSansCode.woff2) */
 @font-face {
@@ -43,8 +44,8 @@ p {
 .hero-title {
   /* increased ~50% vs original clamp(2.5rem, 6vw, 5rem) */
   font-size: clamp(3.75rem, 9vw, 7.5rem);
-  margin: 0 0 0.25rem 0; /* reduce space below the title to bring subtitle closer */
-  font-family: 'Doto', 'Inter', system-ui, -apple-system, sans-serif;
+  margin: 0 0 0.15rem 0; /* reduce space below the title to bring subtitle closer */
+  font-family: 'Doto', system-ui, -apple-system, sans-serif;
   font-weight: 900;
   letter-spacing: -0.02em;
 }
@@ -127,7 +128,7 @@ header.header p.subtitle,
 .content {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 0.6rem 1.5rem; /* much tighter top padding so content sits closer under nav; expansion still pushes it */
+  padding: 0.2rem 1.5rem; /* much tighter top padding so content sits closer under nav; expansion still pushes it */
 }
 
 .intro {
