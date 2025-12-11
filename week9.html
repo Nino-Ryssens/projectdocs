@@ -5,63 +5,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Procesdocument NR</title>
   <link href="./dist/output.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/styles.css">
-  <link rel="stylesheet" href="assets/flexboxes.css">
-  <link rel="stylesheet" href="assets/nav.css">
-  <link rel="stylesheet" href="assets/typography.css">
+  <link rel="stylesheet" href="assets/tailwind-custom.css">
 </head>
-<body>
-  <header class="header">
-    <h1 class="hero-title">Prototyping Tools</h1>
-    <p class="subtitle">Procesdocumentatie</p>
+<body class="font-sans bg-bg-light text-text-primary">
+  <header class="text-center border-b border-border-light py-5 scale-125 origin-top" style="padding-bottom: 1.68rem;">
+    <h1 class="font-display font-black text-7xl mb-header-gap -tracking-wider">Prototyping Tools</h1>
+    <p class="text-lg text-text-secondary text-center mt-0.5">Procesdocumentatie</p>
   </header>
 
   <div id="nav-closed" aria-hidden="true"></div>
 
-  <nav class="nav" aria-label="Primary">
+  <nav class="nav relative" aria-label="Primary">
     <input id="nav-toggle" class="nav-toggle-checkbox" type="checkbox" aria-hidden="true">
-    <ul>
+    <ul class="flex justify-center items-center gap-nav-gap py-0.5 px-0 list-none m-0">
       <li><a href="index.html">Homepage</a></li>
-      <li class="toggle-label">
-        <label for="nav-toggle" class="nav-toggle" role="button" tabindex="0" aria-label="Toggle weeks">
+      <li class="toggle-label inline-flex items-center relative">
+        <label for="nav-toggle" class="nav-toggle w-9 h-9 inline-grid place-items-center rounded-lg cursor-pointer transition-all duration-180" role="button" tabindex="0" aria-label="Toggle weeks">
           <span class="glyph arrow" aria-hidden="true">›</span>
           <span class="glyph dash" aria-hidden="true">—</span>
         </label>
       </li>
-      <li class="week-link"><a href="week1.html">Week 1</a></li>
-      <li class="week-link"><a href="week2.html">Week 2</a></li>
-      <li class="week-link"><a href="week3.html">Week 3</a></li>
-      <li class="week-link"><a href="week4.html">Week 4</a></li>
-      <li class="week-link"><a href="week5.html">Week 5</a></li>
-      <li class="week-link"><a href="week6.html">Week 6</a></li>
-      <li class="week-link"><a href="week7.html">Week 7</a></li>
-      <li class="week-link"><a href="week8.html">Week 8</a></li>
-      <li class="week-link"><a href="week9.html" class="active">Week 9</a></li>
-      <li class="week-link"><a href="week10.html">Week 10</a></li>
-      <li class="week-link"><a href="week11.html">Week 11</a></li>
-      <li class="week-link"><a href="week12.html">Week 12</a></li>
+      <li class="week-link"><a href="week1.html" class="no-underline text-text-primary font-medium transition-colors duration-200 inline-flex items-center gap-1">Week 1</a></li>
+      <li class="week-link"><a href="week2.html" class="no-underline text-text-primary font-medium transition-colors duration-200 inline-flex items-center gap-1">Week 2</a></li>
+      <li class="week-link"><a href="week3.html" class="no-underline text-text-primary font-medium transition-colors duration-200 inline-flex items-center gap-1">Week 3</a></li>
+      <li class="week-link"><a href="week4.html" class="no-underline text-text-primary font-medium transition-colors duration-200 inline-flex items-center gap-1">Week 4</a></li>
+      <li class="week-link"><a href="week5.html" class="no-underline text-text-primary font-medium transition-colors duration-200 inline-flex items-center gap-1">Week 5</a></li>
+      <li class="week-link"><a href="week6.html" class="no-underline text-text-primary font-medium transition-colors duration-200 inline-flex items-center gap-1">Week 6</a></li>
+      <li class="week-link"><a href="week7.html" class="no-underline text-text-primary font-medium transition-colors duration-200 inline-flex items-center gap-1">Week 7</a></li>
+      <li class="week-link"><a href="week8.html" class="no-underline text-text-primary font-medium transition-colors duration-200 inline-flex items-center gap-1">Week 8</a></li>
+      <li class="week-link"><a href="week9.html" class="no-underline text-text-primary font-medium transition-colors duration-200 inline-flex items-center gap-1 active:text-accent">Week 9</a></li>
+      <li class="week-link"><a href="week10.html" class="no-underline text-text-primary font-medium transition-colors duration-200 inline-flex items-center gap-1">Week 10</a></li>
+      <li class="week-link"><a href="week11.html" class="no-underline text-text-primary font-medium transition-colors duration-200 inline-flex items-center gap-1">Week 11</a></li>
+      <li class="week-link"><a href="week12.html" class="no-underline text-text-primary font-medium transition-colors duration-200 inline-flex items-center gap-1">Week 12</a></li>
     </ul>
   </nav>
 
-  <main class="content">
-    <h2>Week 9 — Tailwind geinstalleerd & Figma borden gëupdatet.</h2>
-    <p>In week 9 heb ik gewerkt aan mijn figma borden. Ik heb de 3 treinschermen omgevormt naar een design voor een mobiele applicatie.</p>
-    <div class="two-columns">
-      <div>
-        <img src="assets/Procesfigma_Week9.png" alt="Visueel voorbeeld" style="width:100%; border-radius:8px; margin-bottom:1rem;">
+  <main class="max-w-content mx-auto pt-8 px-6 pb-8">
+    <h2 class="text-3xl font-bold -tracking-wider text-text-primary mt-0 mb-4">Week 9 — Tailwind geinstalleerd & Figma borden gëüpdatet.</h2>
+    <div class="w-12 h-1 bg-accent rounded-full mt-2 mb-6"></div>
+    <p class="max-w-prose mt-2 mb-6 text-text-secondary leading-relaxed">In week 9 heb ik gewerkt aan mijn figma borden. Ik heb de 3 treinschermen omgevormt naar een design voor een mobiele applicatie.</p>
+    <div class="flex flex-wrap gap-4 mt-1.5">
+      <div class="flex-1 min-w-[45%] bg-white border border-border-lighter rounded-lg p-8 shadow-sm hover:shadow-md hover:-translate-y-0.75 transition-all duration-200">
+        <a href="assets/Procesfigma_Week9.png" class="lightbox" data-alt="Week 9"><img src="assets/Procesfigma_Week9.png" alt="Visueel voorbeeld" class="responsive-img mb-4 cursor-pointer hover:opacity-80 transition-opacity"></a>
         <h3>Figma hervorming</h3>
-        <p>Zoals je kan zien in de foto heb ik deze les gewerkt aan het hervormen van de treinschermen naar een UI/UX design voor mobiele applicatie, het zoeken van de juiste marges en verhoudeningen.</p>
+        <p class="max-w-prose mt-2 mb-6 text-text-secondary leading-relaxed">Zoals je kan zien in de foto heb ik deze les gewerkt aan het hervormen van de treinschermen naar een UI/UX design voor mobiele applicatie, het zoeken van de juiste marges en verhoudeningen.</p>
       </div>
     </div>
   </main>
 
-  <div class="page-nav">
-    <a href="week8.html" class="prev-week">← Vorige week</a>
-    <a href="week10.html" class="next-week">Volgende week →</a>
+  <div class="page-nav flex justify-between items-center max-w-content mx-auto mt-12 px-6 py-4 border-t border-border-lighter">
+    <a href="week8.html" class="no-underline text-accent font-semibold transition-all duration-200 hover:translate-x-1">← Vorige week</a>
+    <a href="week10.html" class="no-underline text-accent font-semibold transition-all duration-200 hover:translate-x-1">Volgende week →</a>
   </div>
 
-  <footer class="footer">
-    © 2025 Nino Ryssens — Grafisch en Digitale Media
+  <footer class="text-center text-sm text-text-tertiary py-8 pb-16 border-t border-border-lighter">
+    <div class="flex gap-4 justify-center mb-2">
+      <a href="https://github.com/Nino-Ryssens/projectdocs" target="_blank" rel="noopener noreferrer" class="inline-block px-6 py-2 bg-accent text-white rounded-lg hover:bg-opacity-90 transition-all">GitHub Repository →</a>
+      <a href="assets/Lost-in-tra(i)nslation_borden_RyssensN_2526.pdf" target="_blank" rel="noopener noreferrer" class="inline-block px-6 py-2 bg-accent text-white rounded-lg hover:bg-opacity-90 transition-all">Figma Boards PDF →</a>
+      <a href="https://www.figma.com/proto/5SdUMXc88aYSiTXPnDtTzf/Midi-Treinborden?page-id=0%3A1&node-id=129-1145&p=f&viewport=-170%2C741%2C0.17&t=ITxxPCSA8J4OGGEF-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=129%3A1145" target="_blank" rel="noopener noreferrer" class="inline-block px-6 py-2 bg-accent text-white rounded-lg hover:bg-opacity-90 transition-all">Figma Prototype →</a>
+    </div>
+    <p>© 2025 Nino Ryssens — Grafisch en Digitale Media 1</p>
   </footer>
+    <script src="assets/mobile-nav.js"></script>
+  <script src="assets/sticky-footer.js"></script>
+  <script src="assets/responsive-breakpoints.js"></script>
+  <script src="assets/lightbox.js"></script>
 </body>
 </html>

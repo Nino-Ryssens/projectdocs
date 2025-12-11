@@ -1,0 +1,426 @@
+/* Load Inter so every page shows the same font weights */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Doto:wght,ROND@900,100&display=swap');
+
+/* Load / register "Google Sans Code" */
+@font-face {
+  font-family: 'Google Sans Code';
+  src: local('Google Sans Code'), url('assets/fonts/GoogleSansCode.woff2') format('woff2');
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+  font-optical-sizing: auto;
+}
+
+/* === CUSTOM ANIMATIONS & COMPLEX STYLES === */
+
+/* hide the checkbox visually but keep it accessible */
+.nav-toggle-checkbox {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* stacked glyphs for arrow -> dash animation */
+.nav .glyph {
+  position: absolute;
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform-origin: center;
+}
+.nav .glyph.arrow { 
+  opacity: 1; 
+  transform: translateX(0) scale(1); 
+}
+.nav .glyph.dash  { 
+  opacity: 0; 
+  transform: translateX(-6px) scale(.95); 
+}
+
+/* toggle animation */
+.nav .toggle-label:hover .glyph.arrow,
+.nav .toggle-label:focus-within .glyph.arrow,
+#nav-toggle:checked ~ ul .glyph.arrow {
+  opacity: 0;
+  transform: translateX(-6px) scale(.95);
+}
+.nav .toggle-label:hover .glyph.dash,
+.nav .toggle-label:focus-within .glyph.dash,
+#nav-toggle:checked ~ ul .glyph.dash {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+/* === RESPONSIVE NAVIGATION FOR MOBILE === */
+@media (max-width: 768px) {
+  /* Mobile nav: compact horizontal layout */
+  .nav ul {
+    padding: 0.75rem 0.5rem;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+  }
+  
+  .nav a {
+    font-size: 0.875rem;
+    padding: 0.35rem 0.5rem;
+    border-radius: 4px;
+  }
+  
+  .nav .nav-toggle {
+    width: 32px;
+    height: 32px;
+  }
+  
+  /* Hide week links by default on mobile */
+  .nav .week-link {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    min-width: 200px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+    padding: 0.5rem 0;
+    max-height: none;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Show weeks when toggle is checked */
+  #nav-toggle:checked ~ ul .week-link {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  
+  .nav .week-link a {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .nav .week-link a:hover {
+    background: rgba(125, 205, 133, 0.1);
+  }
+}
+
+/* Desktop: original horizontal layout */
+@media (min-width: 769px) {
+  .nav ul {
+    padding: 0.75rem 0;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(221, 221, 221, 0.3);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  .nav .week-link {
+    overflow: hidden;
+    max-height: 420px;
+    opacity: 1;
+    transform: translateY(0);
+    transition: max-height 0.30s ease, opacity 0.30s ease, transform 0.30s ease;
+    pointer-events: auto;
+  }
+  
+  .nav .toggle-label:hover ~ .week-link,
+  .nav .toggle-label:focus-within ~ .week-link,
+  #nav-toggle:checked ~ ul .week-link {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+  }
+}
+
+/* responsive images used across pages */
+.responsive-img,
+.content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+figcaption {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+/* === APPLE GLASS MORPHISM === */
+body {
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Use background image with 75% opacity overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../assets/TR-8.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0.75;
+  z-index: -3;
+}
+
+/* Glass effect for cards and containers */
+.two-columns > div {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+main {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 16px;
+  margin: 1.5rem;
+}
+
+footer {
+  background: rgba(255, 255, 255, 0.95);
+  color: #7dcd85;
+  padding: 1.5rem;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+}
+
+/* Page navigation - volgende/vorige week */
+.page-nav {
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
+  box-shadow: none;
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+header {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.nav ul {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+/* nav focus styling */
+.nav .nav-toggle {
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.06);
+}
+
+.nav .nav-toggle:focus,
+.nav .nav-toggle:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.08);
+  outline-offset: 4px;
+}
+
+/* === HEADER REFINEMENT === */
+header {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+header h1 {
+  letter-spacing: -0.03em;
+  font-weight: 900;
+}
+
+header p {
+  margin-bottom: 2rem;
+}
+
+/* === NAVIGATION IMPROVEMENTS === */
+.nav ul {
+  padding: 0.75rem 0;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(221, 221, 221, 0.3);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.nav a {
+  position: relative;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.nav a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #7dcd85;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.nav a:hover::before,
+.nav a.active::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.nav a:hover,
+.nav a.active {
+  color: #7dcd85;
+  background: rgba(125, 205, 133, 0.08);
+  font-weight: 600;
+}
+
+/* anchor for nav-closed pattern */
+#nav-closed {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+#nav-closed:target ~ .nav .week-link {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+}
+
+#nav-closed:target ~ .nav .glyph.arrow {
+  opacity: 0;
+  transform: translateX(-6px) scale(.95);
+}
+#nav-closed:target ~ .nav .glyph.dash {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+/* page-nav hover animation - same for both vorige and volgende week */
+.page-nav a {
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.page-nav a:hover {
+  transform: translateX(var(--translate-direction, 0.25rem));
+}
+
+/* two-column card hover */
+.two-columns > div {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  border-color: rgba(221, 221, 221, 0.5);
+}
+
+.two-columns > div:hover {
+  transform: translateY(-6px) scale(1.01);
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15), inset 0 1px 2px rgba(255, 255, 255, 0.9);
+  border-color: rgba(125, 205, 133, 0.4);
+}
+
+/* responsive nav for mobile */
+@media (max-width: 700px) {
+  .nav .toggle-label {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  #nav-toggle:checked ~ ul .toggle-label {
+    justify-content: flex-start;
+    padding-right: 0.5rem;
+  }
+
+  .nav .nav-toggle {
+    transition: transform 0.18s ease;
+  }
+}
+
+/* === BREAKPOINT-BASED TYPOGRAPHY === */
+/* Mobile breakpoint (< 768px) */
+html.bp-mobile main {
+  padding: 1rem;
+}
+
+html.bp-mobile main h2 {
+  font-size: 1.5rem;
+}
+
+html.bp-mobile main h3 {
+  font-size: 1.125rem;
+}
+
+html.bp-mobile main p {
+  font-size: 0.9375rem;
+}
+
+/* Tablet/Desktop breakpoint (>= 768px) */
+html.bp-tablet main,
+html.bp-desktop main {
+  padding: 1.5rem;
+}
+
+html.bp-tablet main h2,
+html.bp-desktop main h2 {
+  font-size: 2rem;
+}
+
+html.bp-tablet main h3,
+html.bp-desktop main h3 {
+  font-size: 1.25rem;
+}
+
+html.bp-tablet main p,
+html.bp-desktop main p {
+  font-size: 1rem;
+}
+
+
+
