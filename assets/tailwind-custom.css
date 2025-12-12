@@ -61,7 +61,7 @@
 }
 
 /* === RESPONSIVE NAVIGATION FOR MOBILE === */
-@media (max-width: 768px) {
+@media (max-width: 1480px) {
   /* Mobile nav: compact horizontal layout */
   .nav ul {
     padding: 0.75rem 0.5rem;
@@ -117,10 +117,20 @@
   .nav .week-link a:hover {
     background: rgba(125, 205, 133, 0.1);
   }
+  
+  /* Hide desktop nav on mobile/tablet */
+  .nav {
+    display: none !important;
+  }
 }
 
 /* Desktop: original horizontal layout */
-@media (min-width: 769px) {
+@media (min-width: 1481px) {
+  /* Show desktop nav on desktop */
+  .nav {
+    display: block !important;
+  }
+  
   .nav ul {
     padding: 0.75rem 0;
     background: rgba(255, 255, 255, 0.6);
@@ -136,6 +146,12 @@
     transform: translateY(0);
     transition: max-height 0.30s ease, opacity 0.30s ease, transform 0.30s ease;
     pointer-events: auto;
+  }
+
+  /* Hide secret page button and divider in desktop navigation */
+  .nav .menu-divider,
+  .nav .secret-menu-item {
+    display: none;
   }
   
   .nav .toggle-label:hover ~ .week-link,
@@ -421,6 +437,452 @@ html.bp-tablet main p,
 html.bp-desktop main p {
   font-size: 1rem;
 }
+
+/* === MOBILE-FIRST RESPONSIVE DESIGN === */
+
+/* Mobile menu hamburger button */
+.mobile-menu-btn {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(125, 205, 133, 0.3);
+  border-radius: 8px;
+  padding: 0.75rem;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: all 0.3s ease;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.mobile-menu-btn:hover {
+  background: rgba(255, 255, 255, 1);
+  border-color: rgba(125, 205, 133, 0.6);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Hamburger icon lines */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2.5px;
+  background: #111;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-btn[aria-expanded="true"] .hamburger span:nth-child(1) {
+  transform: rotate(45deg) translate(10px, 10px);
+}
+
+.mobile-menu-btn[aria-expanded="true"] .hamburger span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-btn[aria-expanded="true"] .hamburger span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Mobile Slide-in Menu Overlay */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 35;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.menu-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Mobile Slide-in Menu Panel */
+.mobile-slide-menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 280px;
+  max-width: 85vw;
+  background: #ffffff;
+  border-radius: 0 16px 16px 0;
+  z-index: 49;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.mobile-slide-menu.open {
+  transform: translateX(0);
+}
+
+/* Menu Header with Close Button */
+.menu-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  min-height: 56px;
+}
+
+.menu-close-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111;
+  transition: color 0.2s ease;
+}
+
+.menu-close-btn:hover {
+  color: #7dcd85;
+}
+
+.menu-close-btn:focus {
+  outline: 2px solid #7dcd85;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Menu List */
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 0;
+  flex: 1;
+}
+
+.menu-list li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.menu-list li:last-child {
+  border-bottom: none;
+}
+
+.menu-divider {
+  border-bottom: 1px solid #eee !important;
+  margin: 1rem 0 !important;
+  padding: 0 !important;
+  height: 0;
+}
+
+/* Menu Items */
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  color: #111;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.menu-item:hover,
+.menu-item:focus {
+  background: rgba(125, 205, 133, 0.08);
+  color: #7dcd85;
+  border-left-color: #7dcd85;
+  padding-left: 1.75rem;
+  outline: none;
+}
+
+.menu-item.active {
+  background: rgba(125, 205, 133, 0.12);
+  color: #7dcd85;
+  border-left-color: #7dcd85;
+}
+
+.menu-item:focus-visible {
+  outline: 2px solid #7dcd85;
+  outline-offset: -2px;
+}
+
+/* Menu Icons */
+.menu-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+/* Secret Menu Item - Special Styling */
+.secret-menu-item {
+  background: #000;
+  border-left-color: #000;
+  color: #fff;
+  position: relative;
+}
+
+.secret-menu-item:hover {
+  background: #1a1a1a;
+  border-left-color: #1a1a1a;
+  color: #fff;
+}
+
+/* Mobile header adjustments */
+@media (max-width: 1480px) {
+  .mobile-menu-btn {
+    display: flex;
+  }
+  
+  /* Hide desktop nav on mobile but keep it for hamburger menu content */
+  .nav {
+    position: static;
+  }
+  
+  .nav > ul {
+    display: none !important;
+  }
+  
+  header {
+    padding: 1rem !important;
+    margin-top: 50px;
+  }
+  
+  header h1 {
+    font-size: 2rem !important;
+    margin-bottom: 0.5rem !important;
+    text-align: center;
+  }
+  
+  header p {
+    font-size: 1rem !important;
+    margin: 0 !important;
+    text-align: center;
+  }
+  
+  /* Main content adjustments */
+  main {
+    margin: 1rem !important;
+    padding: 1.5rem !important;
+    border-radius: 12px !important;
+    margin-top: 3em !important;
+  }
+  
+  main h2 {
+    font-size: 1.75rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  main h3 {
+    font-size: 1.25rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  main p {
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+  }
+  
+  /* Page navigation */
+  .page-nav {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 2rem !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0.6rem 1.5rem !important;
+    margin: 3rem auto 3rem !important;
+    max-width: 90vw !important;
+    border-top: 1px solid #eee !important;
+    border-bottom: none !important;
+  }
+  
+  .page-nav span {
+    display: none !important;
+  }
+  
+  .page-nav a {
+    display: inline !important;
+    text-align: center !important;
+    padding: 0 !important;
+    background: none !important;
+    border-radius: 0 !important;
+    color: #7dcd85 !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+  }
+  
+  .page-nav a:active {
+    transform: none !important;
+  }
+  
+  /* Center body cards flex container */
+  main > .flex {
+    justify-content: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  /* Also center flex-wrap containers */
+  .flex.flex-wrap {
+    justify-content: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 90vw !important;
+    margin: 0 auto !important;
+  }
+  
+  /* Ensure all flex containers have same width on mobile/tablet */
+  main > .flex {
+    max-width: calc(90vw) !important;
+  }
+  footer {
+    padding: 1.5rem 1rem !important;
+  }
+  
+  footer .flex {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 0.75rem !important;
+    justify-content: center !important;
+  }
+  
+  footer a {
+    flex: 1 1 auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.75rem 0.5rem !important;
+    text-align: center !important;
+    border-radius: 8px !important;
+    background: #7dcd85 !important;
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 0.7rem !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  
+  footer a:active {
+    transform: scale(0.98) !important;
+    background: #6ab877 !important;
+  }
+  
+  footer p {
+    font-size: 0.875rem !important;
+    margin-top: 1.5rem !important;
+    color: #666 !important;
+    flex-basis: 100% !important;
+  }
+  
+  /* Week 4 cards stacked vertically on mobile */
+  .flex-1[class*="min-w"] {
+    min-width: 100% !important;
+  }
+  
+  /* Images with lightbox */
+  .lightbox {
+    display: block !important;
+    border-radius: 8px !important;
+    margin: 1rem 0 !important;
+  }
+  
+  /* Spacing utilities for mobile */
+  .space-y-6 {
+    gap: 1.5rem !important;
+  }
+}
+
+/* Tablet adjustments (mobile till 1480px) */
+@media (min-width: 1px) and (max-width: 1480px) {
+  .mobile-menu-btn {
+    display: flex;
+  }
+  
+  main {
+    margin: 2rem;
+  }
+  
+  footer {
+    padding: 2rem 1rem;
+  }
+  
+  footer .flex {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 0.75rem !important;
+    justify-content: center !important;
+  }
+  
+  footer a {
+    flex: 1 1 auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.75rem 0.5rem !important;
+    font-size: 0.7rem !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  
+  footer p {
+    flex-basis: 100% !important;
+  }
+  
+  /* Week 4 cards stacked vertically on tablet */
+  .flex-1[class*="min-w"] {
+    min-width: 100% !important;
+  }
+}
+
+/* Desktop (1481px+) - keep original */
+@media (min-width: 1481px) {
+  .mobile-menu-btn {
+    display: none !important;
+  }
+  
+  #mobile-menu {
+    display: none !important;
+  }
+  
+  .menu-overlay {
+    display: none !important;
+  }
+  
+  .nav > ul {
+    display: flex !important;
+  }
+}
+
 
 
 

@@ -140,6 +140,8 @@ header.header p.subtitle,
   flex-wrap: wrap;
   gap: 1rem;   /* slightly tighter column gap */
   margin-top: 0.35rem; /* much smaller gap between nav/content and the columns */
+  justify-content: center;
+  align-items: stretch;
 }
 
 .two-columns > div {
@@ -181,12 +183,13 @@ a:hover {
 /* === PAGE NAVIGATION === */
 .page-nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   max-width: 1000px;
   margin: 1.25rem auto 0; /* reduce space above footer nav so pages feel tighter */
   padding: 0.6rem 1.5rem;
   border-top: 1px solid #eee;
+  gap: 2rem;
 }
 
 .page-nav a {
