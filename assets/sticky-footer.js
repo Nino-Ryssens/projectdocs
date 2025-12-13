@@ -1,17 +1,14 @@
-// Footer positioning - always static, no sticky behavior
+// Footer positioning using CSS flexbox (no JS needed, but kept for reference)
 (function() {
   function updateFooterPosition() {
     const footer = document.querySelector('footer');
+    const main = document.querySelector('main');
     
-    if (!footer) return;
+    if (!footer || !main) return;
     
-    // Keep footer static for consistent spacing
-    footer.style.position = 'static';
-    footer.style.bottom = 'auto';
-    footer.style.left = 'auto';
-    footer.style.right = 'auto';
-    footer.style.zIndex = 'auto';
-    document.body.style.paddingBottom = '0';
+    // CSS Flexbox handles this now, but ensure footer is visible
+    footer.style.width = '100%';
+    footer.style.overflow = 'hidden';
   }
   
   // Check on page load
@@ -19,4 +16,7 @@
   
   // Check after images load
   window.addEventListener('load', updateFooterPosition);
+  
+  // Check on resize
+  window.addEventListener('resize', updateFooterPosition);
 })();

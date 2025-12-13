@@ -277,7 +277,7 @@ a:hover {
 
 /* SITE COLORS */
 :root {
-  --accent: #7dcd85; /* secondary color updated */
+  --accent: #048ADE; /* secondary color updated */
 }
 
 /* site-wide use of Google Sans Code with monospace fallback */
@@ -456,7 +456,7 @@ figcaption {
 .nav .week-link a:active,
 .nav .week-link a.active {
   color: var(--accent);
-  background: rgba(125,205,133,0.06); /* subtle background to match desktop hover */
+  background: rgba(4,138,222,0.06); /* subtle background to match desktop hover */
   font-weight: 600;
   transform: translateX(0); /* keeps small hover shifts consistent */
   outline: none;
@@ -465,7 +465,7 @@ figcaption {
 /* ensure focus is visible for keyboard users */
 .nav a:focus-visible,
 .nav .week-link a:focus-visible {
-  box-shadow: 0 0 0 3px rgba(125,205,133,0.12);
+  box-shadow: 0 0 0 3px rgba(4,138,222,0.12);
   border-radius: 8px;
 }
 

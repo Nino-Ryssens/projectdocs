@@ -9,7 +9,7 @@ module.exports = {
         'mono': ['Google Sans Code', 'monospace'],
       },
       colors: {
-        'accent': '#7dcd85',
+        'accent': '#048ADE',
         'text-primary': '#111',
         'text-secondary': '#555',
         'text-tertiary': '#666',

@@ -10,31 +10,44 @@ class GlobalAudioPlayer {
     this.songs = {
       1: {
         title: 'Liebestod',
+        artist: 'Richard Wagner',
         url: 'assets/Liebestod.mp3'
       },
       2: {
         title: 'Poepinjehoofd',
-        url: 'assets/poepinjehoofd.wav'
+        artist: 'Raggende Mannen',
+        url: 'assets/poepinjehoofd.mp3'
       },
       3: {
         title: 'Schoppenaas',
+        artist: 'Peter Pan Speedrock',
         url: 'assets/schoppenaas.mp3'
       }
     };
     this.currentSong = this.loadState('currentSong') || 1;
     this.isPlaying = this.loadState('isPlaying') || false;
     this.volume = this.loadState('volume') || 0.7;
+    this.currentTime = this.loadState('currentTime') || 0;
     
     // Load the stored song
     this.loadSong(this.currentSong);
     this.audio.volume = this.volume;
+    this.audio.currentTime = this.currentTime;
     
     // Resume playing if it was playing before page load
     if (this.isPlaying) {
       setTimeout(() => {
+        this.audio.currentTime = this.currentTime;
         this.play();
       }, 100);
     }
+    
+    // Save currentTime every 500ms
+    setInterval(() => {
+      if (this.isPlaying) {
+        this.saveState('currentTime', this.audio.currentTime);
+      }
+    }, 500);
     
     // Setup event listeners
     this.setupListeners();
