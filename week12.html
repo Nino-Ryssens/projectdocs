@@ -175,23 +175,52 @@
   </nav>
 
   <main class="max-w-content mx-auto pt-8 px-6 pb-8">
-    <h2 class="text-3xl font-bold -tracking-wider text-text-primary mt-0 mb-4">Week 12 — Afronding</h2>
+    <h2 class="text-3xl font-bold -tracking-wider text-text-primary mt-0 mb-4">Week 12 — Website aanpassingen</h2>
     <div class="w-12 h-1 bg-accent rounded-full mt-2 mb-6"></div>
-    <p class="max-w-prose mt-2 mb-6 text-text-secondary leading-relaxed">Laatste week: afronden van documentatie, nabespreking en eindcontrole van alle deliverables.</p>
+    <p class="max-w-prose mt-2 mb-6 text-text-secondary leading-relaxed">Als je op één van de fotos klikt en met je 'arrow keys' van links of rechts klikt kunt u de voor en na zien. zelfde voor de andere foto. deze week heb ik visuele aanpassingen gemaakt door gebruik te maken van een achtergrond. Ook kan je vanaf nu beter de website bedienen op mobiel.</p>
     
-    <figure class="mt-6 mb-6">
-      <a href="assets/Interactifbord-gif.gif" class="lightbox" data-alt="Week 12"><img src="assets/Interactifbord-gif.gif" alt="Interactieve bord GIF" loading="lazy" class="responsive-img cursor-pointer hover:opacity-80 transition-opacity"></a>
-    </figure>
-    
-    <p class="max-w-prose mt-4 mb-6 text-text-secondary leading-relaxed">In de gif kunt u de huidige flow zien. Deze week heb ik gewerkt aan werkende knoppen en een natuurlijke flow hierin verwerken.</p>
-    
-    <div class="flex flex-wrap gap-4 mt-1.5">
-      <div class="flex-1 min-w-[45%] bg-white border border-border-lighter rounded-lg p-8 shadow-sm hover:shadow-md hover:-translate-y-0.75 transition-all duration-200">
-        <a href="assets/placeholder.jpeg" class="lightbox" data-alt="Week 12"><img src="assets/placeholder.jpeg" alt="Afronding afbeelding" class="responsive-img mb-4 cursor-pointer hover:opacity-80 transition-opacity"></a>
-        <h3>Eindoverzicht</h3>
-        <p class="max-w-prose mt-2 mb-6 text-text-secondary leading-relaxed">Samenvatting van belangrijkste resultaten en reflectie op het proces.</p>
+    <!-- Before & After Comparison -->
+    <section class="mb-8">
+      <div class="bg-white border border-border-lighter rounded-lg overflow-hidden shadow-sm p-6">
+        <div class="flex flex-col md:flex-row gap-6">
+          <!-- Iteratie 1 -->
+          <div class="image-carousel relative w-full md:w-1/2 bg-gray-100 aspect-square" data-pair="0">
+            <a href="assets/week12-before-1.png" class="lightbox cursor-pointer hover:opacity-80 transition-opacity block w-full h-full" data-alt="Voor - Iteratie 1">
+              <img src="assets/week12-before-1.png" alt="Voor - Iteratie 1" class="w-full h-full object-cover">
+            </a>
+            <span class="absolute top-4 right-4 bg-black bg-opacity-60 text-white px-3 py-1.5 rounded text-xs font-semibold">Voor</span>
+            <button class="carousel-prev absolute left-2 top-1/2 -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 text-gray-900 p-2 rounded-full transition-all" aria-label="Previous">
+              <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <button class="carousel-next absolute right-2 top-1/2 -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 text-gray-900 p-2 rounded-full transition-all" aria-label="Next">
+              <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Iteratie 2 -->
+          <div class="image-carousel relative w-full md:w-1/2 bg-gray-100 aspect-square" data-pair="1">
+            <a href="assets/week12-before-2.png" class="lightbox cursor-pointer hover:opacity-80 transition-opacity block w-full h-full" data-alt="Voor - Iteratie 2">
+              <img src="assets/week12-before-2.png" alt="Voor - Iteratie 2" class="w-full h-full object-cover">
+            </a>
+            <span class="absolute top-4 right-4 bg-black bg-opacity-60 text-white px-3 py-1.5 rounded text-xs font-semibold">Voor</span>
+            <button class="carousel-prev absolute left-2 top-1/2 -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 text-gray-900 p-2 rounded-full transition-all" aria-label="Previous">
+              <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <button class="carousel-next absolute right-2 top-1/2 -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 text-gray-900 p-2 rounded-full transition-all" aria-label="Next">
+              <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   </main>
 
   <div class="page-nav flex justify-between items-center max-w-content mx-auto mt-12 px-6 py-4 border-t border-border-lighter">
@@ -207,6 +236,7 @@
     </div>
     <p class="mb-20">© 2025 Nino Ryssens — Grafisch en Digitale Media 1</p>
   </footer>
+  
   <script src="assets/global-audio-player.js"></script>
   <script src="assets/modern-audio-player.js"></script>
   <script src="assets/mobile-nav.js"></script>
@@ -214,5 +244,51 @@
   <script src="assets/sticky-footer.js"></script>
   <script src="assets/responsive-breakpoints.js"></script>
   <script src="assets/lightbox.js"></script>
+  
+  <script>
+    // Image carousel data
+    const imagePairs = [
+      { before: 'assets/week12-before-1.png', after: 'assets/week12-after-1.png', beforeLabel: 'Voor', afterLabel: 'Na' },
+      { before: 'assets/week12-before-2.png', after: 'assets/week12-after-2.png', beforeLabel: 'Voor', afterLabel: 'Na' }
+    ];
+
+    document.querySelectorAll('.image-carousel').forEach((carousel) => {
+      const pairIndex = parseInt(carousel.dataset.pair);
+      const pair = imagePairs[pairIndex];
+      const img = carousel.querySelector('img');
+      const label = carousel.querySelector('span');
+      const link = carousel.querySelector('a');
+      const prevBtn = carousel.querySelector('.carousel-prev');
+      const nextBtn = carousel.querySelector('.carousel-next');
+
+      let isShowingBefore = img.src === pair.before;
+
+      function toggleImage() {
+        isShowingBefore = !isShowingBefore;
+        const newSrc = isShowingBefore ? pair.before : pair.after;
+        const newLabel = isShowingBefore ? pair.beforeLabel : pair.afterLabel;
+        
+        img.src = newSrc;
+        label.textContent = newLabel;
+        link.href = newSrc;
+        link.dataset.alt = newLabel;
+      }
+
+      // Arrow buttons toggle between before/after
+      prevBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        isShowingBefore = true;
+        toggleImage();
+      });
+
+      nextBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        isShowingBefore = false;
+        toggleImage();
+      });
+    });
+  </script>
 </body>
 </html>

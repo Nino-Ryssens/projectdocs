@@ -62,5 +62,33 @@
     if (e.key === 'Escape' && lightbox.style.display === 'flex') {
       closeLightbox();
     }
+    
+    // Arrow key navigation for before/after pairs
+    if (lightbox.style.display === 'flex') {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        e.preventDefault();
+        const currentSrc = lightboxImage.src;
+        const week12Pairs = [
+          { before: 'assets/week12-before-1.png', after: 'assets/week12-after-1.png' },
+          { before: 'assets/week12-before-2.png', after: 'assets/week12-after-2.png' }
+        ];
+        
+        // Find which pair we're in
+        for (let pair of week12Pairs) {
+          if (currentSrc.includes('week12-before') || currentSrc.includes('week12-after')) {
+            if (currentSrc.includes(pair.before) || currentSrc.includes(pair.after)) {
+              if (e.key === 'ArrowLeft') {
+                lightboxImage.src = pair.before;
+                lightboxAlt.textContent = 'Voor';
+              } else {
+                lightboxImage.src = pair.after;
+                lightboxAlt.textContent = 'Na';
+              }
+              break;
+            }
+          }
+        }
+      }
+    }
   });
 })();
